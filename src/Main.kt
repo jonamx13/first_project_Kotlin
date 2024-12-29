@@ -1,13 +1,13 @@
 fun main (args: Array<String>) {
-    var counter : Int = 10
-    while (counter > 0) {
-        println("Counter value is: $counter")
-        counter--
-    }
+    val fruitList: List<String> = listOf("Apple", "Pear", "Raspberry", "Peach")
 
-    do {
-        println("Generating random number...")
-        val randomNumber = (0..100).random()
-        println("The generated number is: $randomNumber")
-    } while (randomNumber > 50)
+    for (fruit in fruitList) println("Today I am gonna eat a fruit called \"$fruit\"")
+
+    fruitList.forEach { fruit -> println("Fruit in forEach: \"$fruit\"") }
+
+    val charsOfFruit: List<Int> = fruitList.map { fruit -> fruit.length }
+    println(charsOfFruit)
+
+    val filteredList = charsOfFruit.filter { charNum -> charNum > 4 }
+    println(filteredList)
 }
