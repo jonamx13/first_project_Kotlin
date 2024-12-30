@@ -1,34 +1,26 @@
 fun main (args: Array<String>) {
-    //immutable
-    val namesList = listOf("Jhon", "Kike", "Camil")
-    println(namesList)
+    val lotteryNumbers = listOf(11,22,43,56,78,66)
 
-    //mutable
-    val emptyList = mutableListOf<String>()
-    println(emptyList)
+    val numbersSorted = lotteryNumbers.sorted()
+    println(numbersSorted)
 
-    emptyList.add("Jhonny")
-    println(emptyList)
+    val descendantLotteryNumbers = lotteryNumbers.sortedDescending()
+    println(descendantLotteryNumbers)
 
-    val valueUsingGet = emptyList.get(0)
-    println(valueUsingGet)
+    val orderedByMultiples = lotteryNumbers.sortedBy { num -> num < 50 }
+    println(orderedByMultiples)
 
-    val valueUsingOperator = emptyList[0]
-    println(valueUsingOperator)
+    val randomNumbers = lotteryNumbers.shuffled()
+    println(randomNumbers)
 
-    val firstValue: String? = namesList.firstOrNull()
-    println(firstValue)
+    val reversedNumbers = lotteryNumbers.reversed()
+    println(reversedNumbers)
 
-    emptyList.removeAt(0)
-    println(emptyList)
+    val numberedMessages = lotteryNumbers.map { num ->
+        "Your lottery number is $num"
+    }
+    println(numberedMessages)
 
-    emptyList.add("Charles")
-    println(emptyList)
-
-    emptyList.removeIf { chars -> chars.length > 3 }
-    println(emptyList)
-
-    val myArray = arrayOf(1,2,3,4)
-    println("Our array $myArray")
-    println("Array as list ${myArray.toList()}")
+    val filteredNumbers = lotteryNumbers.filter { num -> num % 2 == 0 }
+    println(filteredNumbers)
 }
