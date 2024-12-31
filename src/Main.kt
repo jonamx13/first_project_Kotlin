@@ -1,16 +1,30 @@
 fun main (args: Array<String>) {
-    val repeatedVocals = setOf("a","e","i","o","u","a","e","i","o","u")
-    println(repeatedVocals)
+    val superHeroesAges = mapOf(
+        "Ironman" to 35,
+        "Spiderman" to 23,
+        "Captain_America" to 99
+    )
+    println(superHeroesAges)
 
-    val favouriteNumbers = mutableSetOf(1,2,3,4)
-    println(favouriteNumbers)
-    favouriteNumbers.add(5)
-    favouriteNumbers.add(5)
-    println(favouriteNumbers)
+    val superHeroesAgesMutable = mutableMapOf(
+        "Ironman" to 35,
+        "Spiderman" to 23,
+        "Captain_America" to 99
+    )
+    println(superHeroesAgesMutable)
 
-    favouriteNumbers.remove(5)
-    println(favouriteNumbers)
+    superHeroesAgesMutable.put("Wolverine", 45)
+    println(superHeroesAgesMutable)
 
-    val setValue: Int? = favouriteNumbers.firstOrNull { num -> num > 2 }
-    println(setValue)
+    superHeroesAgesMutable["Storm"] = 30
+    println(superHeroesAgesMutable)
+
+    val ironmanAge = superHeroesAgesMutable["Ironman"]
+    println(ironmanAge)
+
+    superHeroesAgesMutable.remove("Wolverine")
+    println(superHeroesAgesMutable)
+
+    println(superHeroesAgesMutable.keys)
+    println(superHeroesAgesMutable.values)
 }
