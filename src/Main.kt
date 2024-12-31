@@ -1,30 +1,57 @@
 fun main (args: Array<String>) {
-    val superHeroesAges = mapOf(
-        "Ironman" to 35,
-        "Spiderman" to 23,
-        "Captain_America" to 99
-    )
-    println(superHeroesAges)
+    val randomPhrase = "This is a random phrase just to test a function 27092"
 
-    val superHeroesAgesMutable = mutableMapOf(
-        "Ironman" to 35,
-        "Spiderman" to 23,
-        "Captain_America" to 99
-    )
-    println(superHeroesAgesMutable)
+    val randomPhraseOrderedRandomly = randomCase(randomPhrase)
+    println(randomPhraseOrderedRandomly)
 
-    superHeroesAgesMutable.put("Wolverine", 45)
-    println(superHeroesAgesMutable)
+    val zigzag = zigzagCasingPhrase(randomPhrase)
 
-    superHeroesAgesMutable["Storm"] = 30
-    println(superHeroesAgesMutable)
+    println(zigzag)
 
-    val ironmanAge = superHeroesAgesMutable["Ironman"]
-    println(ironmanAge)
+    printPhrase(randomCase(randomPhrase))
 
-    superHeroesAgesMutable.remove("Wolverine")
-    println(superHeroesAgesMutable)
+    println("This is a test for extension \"String functions\": " +
+            randomPhrase.randomCaseFun())
+}
 
-    println(superHeroesAgesMutable.keys)
-    println(superHeroesAgesMutable.values)
+fun String.randomCaseFun () : String {
+    val randomNumber = 0..99
+    val randomResult = randomNumber.random()
+
+    return if (randomResult.rem(2) == 0)
+        this.uppercase() // toUpperCase is deprecated
+        else
+        this.lowercase() // toLowerCase is deprecated
+
+}
+fun randomCase (phrase : String) : String {
+    val randomNumber = 0..99
+    val randomResult = randomNumber.random()
+
+    return if (randomResult.rem(2) == 0)
+        phrase.uppercase() // toUpperCase is deprecated
+        else
+        phrase.lowercase() // toLowerCase is deprecated
+
+}
+
+fun zigzagCasingPhrase(phrase: String) : String {
+    var switchUppercase = true
+    return buildString {
+        for( char in phrase ) {
+            if (char != ' ') {
+                append(
+                    if (switchUppercase) char.uppercaseChar()
+                    else char.lowercase()
+                )
+                switchUppercase = !switchUppercase
+            } else {
+                append(char)
+            }
+        }
+    }
+}
+
+fun printPhrase(phrase : String) : Unit {
+    println("Your phrase is: $phrase")
 }
