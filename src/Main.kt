@@ -1,26 +1,16 @@
 fun main (args: Array<String>) {
-    val lotteryNumbers = listOf(11,22,43,56,78,66)
+    val repeatedVocals = setOf("a","e","i","o","u","a","e","i","o","u")
+    println(repeatedVocals)
 
-    val numbersSorted = lotteryNumbers.sorted()
-    println(numbersSorted)
+    val favouriteNumbers = mutableSetOf(1,2,3,4)
+    println(favouriteNumbers)
+    favouriteNumbers.add(5)
+    favouriteNumbers.add(5)
+    println(favouriteNumbers)
 
-    val descendantLotteryNumbers = lotteryNumbers.sortedDescending()
-    println(descendantLotteryNumbers)
+    favouriteNumbers.remove(5)
+    println(favouriteNumbers)
 
-    val orderedByMultiples = lotteryNumbers.sortedBy { num -> num < 50 }
-    println(orderedByMultiples)
-
-    val randomNumbers = lotteryNumbers.shuffled()
-    println(randomNumbers)
-
-    val reversedNumbers = lotteryNumbers.reversed()
-    println(reversedNumbers)
-
-    val numberedMessages = lotteryNumbers.map { num ->
-        "Your lottery number is $num"
-    }
-    println(numberedMessages)
-
-    val filteredNumbers = lotteryNumbers.filter { num -> num % 2 == 0 }
-    println(filteredNumbers)
+    val setValue: Int? = favouriteNumbers.firstOrNull { num -> num > 2 }
+    println(setValue)
 }
