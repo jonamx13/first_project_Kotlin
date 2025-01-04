@@ -1,13 +1,14 @@
 fun main (args: Array<String>) {
-    printName(name ="Jonathan", lastName ="Meixueiro", secondName = "Eduardo")
-    printName(name ="Jonathan", lastName ="Meixueiro")
-}
+    val myLambda: (String) -> Int = {value -> value.length}
+    val executedLambda: Int = myLambda("Hello")
+    println(executedLambda)
 
-fun printName(name: String, secondName: String = "", lastName: String) {
-
-    if (secondName != "") {
-        println("My full name is \"$name $secondName $lastName\"")
-    } else {
-        println("My full name is \"$name $lastName\"")
+    val greetings = listOf("Hello", "Hola", "Privet", "Czesc", "Hallo", "Ola")
+    val lengthGreetings_1 = greetings.map(myLambda)
+    val lengthGreetings_2 = greetings.map {
+        value -> value.length
     }
+
+    println(lengthGreetings_1)
+    println(lengthGreetings_2)
 }
