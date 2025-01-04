@@ -1,14 +1,21 @@
 fun main (args: Array<String>) {
-    val myLambda: (String) -> Int = {value -> value.length}
-    val executedLambda: Int = myLambda("Hello")
-    println(executedLambda)
-
-    val greetings = listOf("Hello", "Hola", "Privet", "Czesc", "Hallo", "Ola")
-    val lengthGreetings_1 = greetings.map(myLambda)
-    val lengthGreetings_2 = greetings.map {
-        value -> value.length
+    val initialValueLength = superFunction(initialValue = "Hello!") { value ->
+        value.length
     }
 
-    println(lengthGreetings_1)
-    println(lengthGreetings_2)
+    println(initialValueLength)
+
+    val lambda: () -> String = inceptionFunction(name = "Jonathan")
+    val lambdaValue: String = lambda()
+    println(lambdaValue)
+}
+
+fun superFunction(initialValue: String, block: (String) -> Int) : Int {
+    return block(initialValue)
+}
+
+fun inceptionFunction(name: String) : () -> String {
+    return {
+        "Hello from Lambda $name"
+    }
 }
