@@ -33,3 +33,54 @@ fun main() {
         else -> showError()
     }
 }
+
+fun showAnswers() {
+    println("Select an option:")
+    println("1. Check all the answers")
+    println("2. Check all the affirmative answers")
+    println("3. Check all the doubtful answers")
+    println("4. Check all the negative answers")
+
+    val inputOption = readLine()
+    when(inputOption) {
+        "1" -> showAnswersByType()
+        "2" -> showAnswersByType(answerType = AFFIRMATIVE_ANSWER)
+        "3" -> showAnswersByType(answerType = DOUBTFUL_ANSWER)
+        "4" -> showAnswersByType(answerType = NEGATIVE_ANSWER)
+        else -> println("Non-valid answer... Goodbye.")
+    }
+}
+
+fun showError() {
+    println("Oh... that wasn't a valid choice... Does't matter... try again")
+}
+
+fun sayGoodbye() {
+    println("Goodbye... or Farewell...")
+}
+
+fun showAnswersByType(answerType: String = "ALL") {
+    val printAnswers: (String) -> Unit = { answerTypePrint ->
+        answers.filterValues { answer ->
+            answer == answerTypePrint
+        }. also { answerValues -> println(answerValues.keys) }
+    }
+    when(answerType) {
+        "ALL" -> answers.keys.forEach { answer -> println(answer) }
+
+        AFFIRMATIVE_ANSWER -> printAnswers(AFFIRMATIVE_ANSWER)
+
+        NEGATIVE_ANSWER -> printAnswers(NEGATIVE_ANSWER)
+
+        DOUBTFUL_ANSWER -> printAnswers(DOUBTFUL_ANSWER)
+    }
+}
+
+fun makeQuestion() {
+    println("What's your question?")
+    readLine()
+    println("So that's your question... well, well... the answer is:")
+    val generatedAnswer = answers.keys.random()
+    println(generatedAnswer)
+
+}
