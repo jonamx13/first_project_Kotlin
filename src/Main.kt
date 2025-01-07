@@ -1,12 +1,7 @@
 fun main (args: Array<String>) {
-    var name: String? = null
-
-    name?.let {
-        value -> println("Name is not null, it is \"$value \"")
-    }
-
-    name = "Jonathan"
-    name?.let {
-        value -> println("Name is not null, it is \"$value \"")
+    val colors = listOf("Blue", "Yellow", "Red")
+    with(colors) {
+        println("These are our colors: $this")
+        println("This list has a quantity of colors of $size")
     }
 }
